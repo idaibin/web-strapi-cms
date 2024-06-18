@@ -4,7 +4,8 @@
   "info": {
     "singularName": "category",
     "pluralName": "categories",
-    "displayName": "Category"
+    "displayName": "Category",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,10 +17,10 @@
       "required": true,
       "unique": true
     },
-    "represents": {
+    "restaurants": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::order.order",
+      "target": "api::restaurant.restaurant",
       "inversedBy": "categories"
     }
   }

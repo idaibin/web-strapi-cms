@@ -451,6 +451,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     singularName: 'category';
     pluralName: 'categories';
     displayName: 'Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -459,7 +460,10 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
     name: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    represents: Schema.Attribute.Relation<'manyToMany', 'api::order.order'>;
+    restaurants: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::restaurant.restaurant'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -488,10 +492,6 @@ export interface ApiOrderOrder extends Struct.CollectionTypeSchema {
     createDate: Schema.Attribute.DateTime;
     payDate: Schema.Attribute.DateTime;
     orderStatus: Schema.Attribute.Enumeration<['pending', 'paid']>;
-    categories: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::category.category'
-    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
@@ -518,6 +518,10 @@ export interface ApiRestaurantRestaurant extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     description: Schema.Attribute.Blocks;
+    categories: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::category.category'
+    >;
     createdAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     publishedAt: Schema.Attribute.DateTime;
